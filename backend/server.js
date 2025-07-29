@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 5000;
 
-// สมมติว่าไฟล์ Excel อยู่ในโฟลเดอร์ชื่อ 'data'
+
 const dataDir = path.join(__dirname, 'data');
 
 app.get('/api/new-employees', (req, res) => {
@@ -67,5 +67,5 @@ app.get('/api/new-employees', (req, res) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running on port ${port}`); // อาจจะแก้ข้อความ log ให้น่าสับสนน้อยลง
+    console.log(`Server is running on port ${port}`); 
 });

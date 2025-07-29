@@ -13,11 +13,10 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // บรรทัดนี้จะอ่านค่าจาก Environment Variable ที่เราจะตั้งใน Netlify
-    // ถ้าหาค่าไม่เจอ (เช่นตอนรันบนเครื่องตัวเอง) มันจะใช้ localhost:5000 แทน
+
     const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
-    fetch(`${apiUrl}/api/new-employees`) // แก้ไขตรงนี้
+    fetch(`${apiUrl}/api/new-employees`) 
       .then(response => {
         if (!response.ok) throw new Error('Failed to connect to the backend server.');
         return response.json();
