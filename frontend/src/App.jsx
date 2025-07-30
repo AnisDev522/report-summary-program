@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
 
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiUrl = 'https://report-summary-program.onrender.com';
 
     fetch(`${apiUrl}/api/new-employees`) 
       .then(response => {
