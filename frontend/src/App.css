@@ -1,37 +1,38 @@
-/* --- Fonts and Global Styles --- */
+/* --- Fonts and Global Styles (Mobile-First) --- */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 @import "tailwindcss";
 
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
-  background-color: #f4f7fa; /* A softer, more professional background */
+  background-color: #f4f7fa;
   color: #334155;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Align to the top on mobile */
+  padding: 16px; /* Add padding for mobile */
 }
 
 /* --- Main Dashboard Layout --- */
 .dashboard-layout {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px;
 }
 
 .dashboard-header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .dashboard-header h1 {
-  font-size: 2.25rem;
+  font-size: 1.75rem; /* Adjusted for mobile */
   font-weight: 900;
   color: #1e293b;
   margin: 0;
 }
 
 .dashboard-header p {
-  font-size: 1.1rem;
+  font-size: 1rem; /* Adjusted for mobile */
   color: #64748b;
   margin-top: 4px;
 }
@@ -39,28 +40,28 @@ body {
 /* --- Stat Cards Section --- */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
 .stat-card {
   background: #ffffff;
-  padding: 24px;
+  padding: 20px;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .stat-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #64748b;
   margin: 0 0 8px 0;
 }
 
 .stat-value {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Adjusted for mobile */
   font-weight: 900;
   color: #1e293b;
   margin: 0;
@@ -71,15 +72,15 @@ body {
 .table-container {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 16px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  overflow-x: auto; /* Enable horizontal scrolling for the table on small screens */
 }
 
 .table-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Adjusted for mobile */
   font-weight: 700;
-  padding: 16px 24px;
+  padding: 16px;
   margin: 0;
   color: #334155;
 }
@@ -90,21 +91,18 @@ table {
 }
 
 th, td {
-  padding: 16px 24px;
+  padding: 12px 16px; /* Adjusted padding for mobile */
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 thead th {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-tbody tr {
-  transition: background-color 0.15s ease-in-out;
 }
 
 tbody tr:last-child td {
@@ -148,6 +146,57 @@ td {
 /* --- Status/Empty/Loading States --- */
 .status-display, .empty-state {
   text-align: center;
-  padding: 60px;
+  padding: 40px; /* Adjusted padding for mobile */
   color: #64748b;
+}
+
+
+/* --- Tablet Styles --- */
+@media (min-width: 768px) {
+  body {
+    padding: 32px;
+    align-items: center;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .dashboard-header p {
+    font-size: 1.1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    gap: 24px;
+  }
+
+  .stat-value {
+    font-size: 2.25rem;
+  }
+
+  .table-title {
+    font-size: 1.25rem;
+    padding: 16px 24px;
+  }
+  
+  th, td {
+    padding: 16px 24px;
+  }
+}
+
+
+/* --- Desktop Styles --- */
+@media (min-width: 1024px) {
+  .dashboard-header h1 {
+    font-size: 2.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Original flexible grid for desktops */
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+  }
 }
